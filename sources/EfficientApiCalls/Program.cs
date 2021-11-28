@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -22,6 +23,8 @@ namespace EfficientApiCalls
 
         private static async Task MainAsync(CancellationToken cancellationToken)
         {
+	        System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
             // JIT
             //await BasicCallAsync();
             //await CancellableCallAsync(cancellationToken);
@@ -47,7 +50,7 @@ namespace EfficientApiCalls
         }
 
         private const string Url =
-            "http://localhost:5000/api/values";
+            "http://localhost:55556/api/values";
 
         private static async Task<List<Model>> BasicCallAsync()
         {
